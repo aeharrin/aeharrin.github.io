@@ -2564,6 +2564,91 @@ input, select, textarea {
 			opacity: 0.25;
 		}
 
+	/* --- Brand New Custom Class: Centered Collection Stack --- */
+
+	/* 1. The container layout instructions */
+		.collection-stack {
+    		display: flex !important;
+   			flex-direction: column !important;
+    		align-items: center !important; 
+    		justify-content: center !important;
+    		gap: 4rem !important; /* Elegant white space between your two grand series */
+    		margin-bottom: 4rem !important;
+		}
+
+	/* 2. The tile layout instructions inside this specific stack */
+		.collection-stack article {
+    		width: 100% !important;
+    		max-width: 650px !important; /* Perfectly framed width for desktop/laptop screens */
+    		float: none !important; 
+    		margin: 0 !important;
+    		position: relative;
+		}
+
+	/* 3. Ensure the inner images stay responsive and crisp */
+		.collection-stack article .image {
+   			display: block !important;
+    		width: 100% !important;
+		}
+	
+		@media screen and (max-width: 1280px) {
+
+			.collection-stack {
+				margin: -1.25em 0 0 -1.25em;
+			}
+
+			.collection-stack article {
+				width: calc(33.33333% - 1.25em);
+				margin: 1.25em 0 0 1.25em;
+			}
+
+		}
+
+		@media screen and (max-width: 980px) {
+
+			.collection-stack {
+				margin: -2.5em 0 0 -2.5em;
+			}
+
+			.collection-stack article {
+				width: calc(50% - 2.5em);
+				margin: 2.5em 0 0 2.5em;
+			}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.collection-stack {
+				margin: -1.25em 0 0 -1.25em;
+			}
+
+			.collection-stack article {
+				width: calc(50% - 1.25em);
+				margin: 1.25em 0 0 1.25em;
+			}
+
+			.collection-stack article:hover > .image {
+				-moz-transform: scale(1.0);
+				-webkit-transform: scale(1.0);
+				-ms-transform: scale(1.0);
+				transform: scale(1.0);
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.collection-stack {
+				margin: 0;
+			}
+
+			.collection-stack article {
+				width: 100%;
+				margin: 1.25em 0 0 0;
+			}
+
+
 /* Tiles */
 
 	.tiles {
