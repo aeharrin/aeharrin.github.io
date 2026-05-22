@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifting Bodies Collection | Ashley Harrington Art</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Shared Header -->
+    <header id="site-header" class="gallery-container">
+        <div class="header-inner">
+            <div class="logo"><a href="index.html">Ashley Harrington</a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ / Inquiries</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sub-Page Grid Area -->
+    <main class="gallery-container">
+        
+        <header class="page-intro">
+            <h1>Shifting Bodies</h1>
+            <p><em>This series explores the somatic translation of weight, movement, and intuitive marking onto large-scale canvas. Each piece is an un-planned emotional exploration of presence.</em></p>
+        </header>
+
+        <!-- The Clean Individual Paintings Grid -->
+        <section class="painting-grid">
+
+            <!-- Painting item 1 -->
+            <div class="painting-card">
+                <div class="img-wrap">
+                    <img src="images/shifting-bodies-1.webp" alt="Somatic figure study by Ashley Harrington" />
+                </div>
+                <h4>Study No. 1</h4>
+                <p>36" x 48", Acrylic on Canvas &mdash; Available</p>
+            </div>
+
+            <!-- Painting item 2 -->
+            <div class="painting-card">
+                <div class="img-wrap">
+                    <img src="images/shifting-bodies-2.webp" alt="Somatic figure study by Ashley Harrington" />
+                </div>
+                <h4>Study No. 2</h4>
+                <p>30" x 40", Acrylic on Canvas &mdash; Sold</p>
+            </div>
+
+            <!-- Painting item 3 -->
+            <div class="painting-card">
+                <div class="img-wrap">
+                    <img src="images/shifting-bodies-3.webp" alt="Somatic figure study by Ashley Harrington" />
+                </div>
+                <h4>Study No. 3</h4>
+                <p>36" x 48", Acrylic on Canvas &mdash; Available</p>
+            </div>
+
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="gallery-container">
+            <p>&copy; 2026 Ashley Harrington Art.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
