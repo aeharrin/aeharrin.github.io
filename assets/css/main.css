@@ -2876,6 +2876,7 @@ input, select, textarea {
 			z-index: 10000;
 			display: inline-block !important;
     		margin: 0 0 0 auto !important;
+			flex-shrink: 0 !important;
 		}
 
 			#header nav ul {
