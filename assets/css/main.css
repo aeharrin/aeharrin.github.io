@@ -2564,57 +2564,74 @@ input, select, textarea {
 			opacity: 0.25;
 		}
 
-	/* --- Streamlined 2-Row Gallery Layout --- */
+	/* --- Container-Bound Horizontal Collection Rows --- */
 
-/* 1. Sets the rows to 100% width, centered on the page */
+/* 1. Keeps the row container bound tightly within your site's main margins */
 .collection-rows {
     display: grid !important;
     grid-template-columns: 100% !important;
-    gap: 3rem !important; /* Elegant breathing room between rows */
-    max-width: 750px !important; /* Prevents your art from over-stretching */
-    margin: 0 auto 4rem auto !important; /* Centers the whole block on the page */
+    gap: 2.5rem !important; /* Elegant vertical breathing room between your series */
+    width: 100% !important; /* Locks it precisely to the width of the template container */
+    margin: 2rem 0 4rem 0 !important;
 }
 
-/* 2. Forces image and text to occupy the exact same spatial grid slot */
+/* 2. Sets a beautiful, proportional landscape frame for your artwork */
 .collection-rows a {
     display: grid !important;
     grid-template-areas: "overlay" !important;
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important; /* Forces a perfect, cinematic widescreen layout on all devices */
     overflow: hidden;
     position: relative;
     text-decoration: none !important;
 }
 
-/* 3. Image stays locked in position */
+/* 3. Forces the image to fill that 16:9 box flawlessly without spilling out */
 .collection-rows img {
     grid-area: overlay !important;
     width: 100% !important;
-    height: auto !important;
-    transition: filter 0.4s ease; /* Prepares image for a smooth darkening effect */
+    height: 100% !important;
+    object-fit: cover !important; /* Safely clips the artwork to the frame without stretching it */
+    object-position: center !important; /* Keeps the heart of the canvas perfectly centered */
+    transition: filter 0.4s ease;
 }
 
-/* 4. Text centers perfectly over the image and starts completely invisible */
+/* 4. Elegant Overlay Text Styling */
 .collection-rows h2 {
     grid-area: overlay !important;
     display: flex !important;
     justify-content: center;
     align-items: center;
     margin: 0 !important;
-    color: #ffffff !important; /* Gallery white text */
-    font-size: 2rem !important;
-    letter-spacing: 0.1em;
-    opacity: 0; /* Hidden by default */
-    background: rgba(0, 0, 0, 0.4); /* Smoothly darkens the painting context */
+    color: #ffffff !important; /* Clean white gallery type */
+    font-size: 2.25rem !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 300 !important;
+    opacity: 0; /* Whispers away until hovered */
+    background: rgba(0, 0, 0, 0.45); /* Soft gallery dark overlay tint */
     transition: opacity 0.4s ease;
     z-index: 2;
 }
 
-/* 5. THE HOVER EFFECT: Darkens image background and fades text into view */
+/* 5. Hover System */
 .collection-rows a:hover img {
-    filter: brightness(70%); /* Direct darkening without messy gradient layers */
+    filter: brightness(70%);
 }
 
 .collection-rows a:hover h2 {
-    opacity: 1; /* Crisp, clean fade-in */
+    opacity: 1;
+}
+
+/* 6. Smooth adjustments for mobile devices */
+@media screen and (max-width: 736px) {
+    .collection-rows {
+        gap: 1.5rem !important;
+    }
+    .collection-rows h2 {
+        font-size: 1.5rem !important;
+        letter-spacing: 0.08em;
+    }
 }
 	
 
