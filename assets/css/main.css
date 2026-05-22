@@ -2564,32 +2564,58 @@ input, select, textarea {
 			opacity: 0.25;
 		}
 
-	/* --- Brand New Custom Class: Centered Collection Stack --- */
+	/* --- Streamlined 2-Row Gallery Layout --- */
 
-	/* 1. The container layout instructions */
-		.collection-stack {
-    		display: flex !important;
-   			flex-direction: column !important;
-    		align-items: center !important; 
-    		justify-content: center !important;
-    		gap: 4rem !important; /* Elegant white space between your two grand series */
-    		margin-bottom: 4rem !important;
-		}
+/* 1. Sets the rows to 100% width, centered on the page */
+.collection-rows {
+    display: grid !important;
+    grid-template-columns: 100% !important;
+    gap: 3rem !important; /* Elegant breathing room between rows */
+    max-width: 750px !important; /* Prevents your art from over-stretching */
+    margin: 0 auto 4rem auto !important; /* Centers the whole block on the page */
+}
 
-	/* 2. The tile layout instructions inside this specific stack */
-		.collection-stack article {
-    		width: 100% !important;
-    		max-width: 650px !important; /* Perfectly framed width for desktop/laptop screens */
-    		float: none !important; 
-    		margin: 0 !important;
-    		position: relative;
-		}
+/* 2. Forces image and text to occupy the exact same spatial grid slot */
+.collection-rows a {
+    display: grid !important;
+    grid-template-areas: "overlay" !important;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
 
-	/* 3. Ensure the inner images stay responsive and crisp */
-		.collection-stack article .image {
-   			display: block !important;
-    		width: 100% !important;
-		}
+/* 3. Image stays locked in position */
+.collection-rows img {
+    grid-area: overlay !important;
+    width: 100% !important;
+    height: auto !important;
+    transition: filter 0.4s ease; /* Prepares image for a smooth darkening effect */
+}
+
+/* 4. Text centers perfectly over the image and starts completely invisible */
+.collection-rows h2 {
+    grid-area: overlay !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+    color: #ffffff !important; /* Gallery white text */
+    font-size: 2rem !important;
+    letter-spacing: 0.1em;
+    opacity: 0; /* Hidden by default */
+    background: rgba(0, 0, 0, 0.4); /* Smoothly darkens the painting context */
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+/* 5. THE HOVER EFFECT: Darkens image background and fades text into view */
+.collection-rows a:hover img {
+    filter: brightness(70%); /* Direct darkening without messy gradient layers */
+}
+
+.collection-rows a:hover h2 {
+    opacity: 1; /* Crisp, clean fade-in */
+}
 	
 
 
