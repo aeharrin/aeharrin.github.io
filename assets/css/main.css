@@ -2564,73 +2564,100 @@ input, select, textarea {
 			opacity: 0.25;
 		}
 
-	/* --- Container-Bound Horizontal Collection Rows --- */
+/* --- Horizontal Rows with Typography Underneath --- */
 
-/* 1. Keeps the row container bound tightly within your site's main margins */
+/* 1. Main outer grid layout */
 .collection-rows {
     display: grid !important;
     grid-template-columns: 100% !important;
-    gap: 2.5rem !important; /* Elegant vertical breathing room between your series */
-    width: 100% !important; /* Locks it precisely to the width of the template container */
+    gap: 4rem !important; /* Spacious, breathing room between your two series blocks */
+    width: 100% !important;
     margin: 2rem 0 4rem 0 !important;
 }
 
-/* 2. Sets a beautiful, proportional landscape frame for your artwork */
-.collection-rows a {
+/* 2. Individual series block margins */
+.collection-block {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+/* 3. Widescreen landscape frame for the image overlay area */
+.collection-block .image-frame {
     display: grid !important;
     grid-template-areas: "overlay" !important;
     width: 100% !important;
-    aspect-ratio: 16 / 9 !important; /* Forces a perfect, cinematic widescreen layout on all devices */
+    aspect-ratio: 16 / 9 !important; /* Perfect uniform cinematic layout */
     overflow: hidden;
     position: relative;
     text-decoration: none !important;
+    margin-bottom: 1.25rem !important; /* Clean space before text starts */
 }
 
-/* 3. Forces the image to fill that 16:9 box flawlessly without spilling out */
-.collection-rows img {
+/* 4. Keeps the painting cropped beautifully inside the frame */
+.collection-block img {
     grid-area: overlay !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* Safely clips the artwork to the frame without stretching it */
-    object-position: center !important; /* Keeps the heart of the canvas perfectly centered */
+    object-fit: cover !important;
+    object-position: center !important;
     transition: filter 0.4s ease;
 }
 
-/* 4. Elegant Overlay Text Styling */
-.collection-rows h2 {
+/* 5. The hidden 'Enter Collection' overlay text */
+.collection-block h2 {
     grid-area: overlay !important;
     display: flex !important;
     justify-content: center;
     align-items: center;
     margin: 0 !important;
-    color: #ffffff !important; /* Clean white gallery type */
-    font-size: 2.25rem !important;
-    letter-spacing: 0.12em;
+    color: #ffffff !important;
+    font-size: 1.5rem !important; /* Sleek, understated text size on hover */
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 300 !important;
-    opacity: 0; /* Whispers away until hovered */
-    background: rgba(0, 0, 0, 0.45); /* Soft gallery dark overlay tint */
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.45); /* Soft gallery protective screen overlay tint */
     transition: opacity 0.4s ease;
     z-index: 2;
 }
 
-/* 5. Hover System */
-.collection-rows a:hover img {
-    filter: brightness(70%);
+/* 6. Typography underneath the image */
+.collection-block h3 {
+    font-size: 1.75rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0 !important;
+    color: #111111 !important; /* Crisp contrast for series names */
 }
 
-.collection-rows a:hover h2 {
+.collection-block p {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+    color: #555555 !important; /* Soft gray for elegant editorial descriptions */
+    margin: 0 !important;
+    max-width: 600px; /* Keeps long description text blocks easy to scan */
+}
+
+/* 7. Interactive Hover Actions */
+.collection-block .image-frame:hover img {
+    filter: brightness(75%);
+}
+
+.collection-block .image-frame:hover h2 {
     opacity: 1;
 }
 
-/* 6. Smooth adjustments for mobile devices */
+/* 8. Mobile Adjustments */
 @media screen and (max-width: 736px) {
     .collection-rows {
-        gap: 1.5rem !important;
+        gap: 3rem !important;
     }
-    .collection-rows h2 {
-        font-size: 1.5rem !important;
-        letter-spacing: 0.08em;
+    .collection-block h3 {
+        font-size: 1.4rem !important;
+    }
+    .collection-block h2 {
+        font-size: 1.25rem !important;
     }
 }
 	
