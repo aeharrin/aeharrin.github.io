@@ -2879,7 +2879,15 @@ input, select, textarea {
 			flex-shrink: 0 !important;
 		}
 
-			#header nav ul {
+
+/* --- Adjust Hamburger Icon Scale --- */
+		#header nav a {
+    		font-size: 1.25rem !important; /* Forces the text/icon size up (adjust 1.25 higher or lower to change scale) */
+    		height: 3.5em !important;     /* Ensures the clickable area stays proportional */
+    		line-height: 3.5em !important;
+}
+
+		#header nav ul {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
