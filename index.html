@@ -60,163 +60,99 @@
   .hero-image-block { position: relative; height: 75vh; max-height: 680px; }
 
   /* ── FEATURED ── */
-  #featured { padding: 6rem 4vw; }
-  .featured-grid {
+ /* ── CURATED EDITORIAL ROWS ── */
+  #featured { 
+    padding: 6rem 4vw; 
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .collection-rows {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 1.2rem;
+    grid-template-columns: 100%;
+    gap: 5rem; /* Generous vertical white space between series blocks */
+    margin: 2rem 0;
   }
-  .feat-main { grid-row: span 2; }
-  .feat-thumb {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-  }
-  .feat-main .feat-thumb { height: 100%; aspect-ratio: unset; }
-  .feat-meta { padding: 0.8rem 0 0; }
-  .feat-title { font-size: 0.95rem; font-weight: 400; }
-  .feat-detail {
-    font-family: var(--mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-top: 0.15rem;
-  }
-  .featured-cta {
-    margin-top: 3rem;
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .featured-cta:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* ── STATEMENT STRIP ── */
-  #statement-strip {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 6rem 4vw;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .strip-label {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(244,240,232,0.35);
-    padding-top: 0.4rem;
-  }
-  .strip-quote {
-    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
-    font-weight: 300;
-    line-height: 1.55;
-    font-style: italic;
-    color: var(--cream);
-  }
-  .strip-quote em { font-style: normal; color: #c4a882; }
-
-  /* ── ABOUT STRIP ── */
-  #about-strip {
-    background: var(--light-bg);
-    padding: 6rem 4vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .about-photo-block { position: relative; }
-  .about-photo {
-    width: 100%;
-    aspect-ratio: 3/4;
-    max-height: 540px;
-  }
-  .about-text-block {}
-  .about-heading {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-  .about-heading em { font-style: italic; color: var(--accent); }
-  .about-body {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--ink);
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-  }
-  .about-link {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    margin-top: 0.5rem;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .about-link:hover { color: var(--accent); border-color: var(--accent); }
-
-  /* ── CONTACT STRIP ── */
-  #contact-strip {
-    background: var(--cream);
-    padding: 6rem 4vw;
+  .collection-block {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+
+  .collection-block .image-frame {
+    display: grid;
+    grid-template-areas: "overlay";
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Clean cinematic desktop frame balance */
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .collection-block img, 
+  .collection-block .placeholder {
+    grid-area: overlay;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.4s ease;
+  }
+
+  /* The clean minimal text overlay revealed on hover */
+  .collection-block h2.enter-label {
+    grid-area: overlay;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-  }
-  .contact-heading {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 0.75rem;
-  }
-  .contact-heading em { font-style: italic; color: var(--accent); }
-  .contact-sub {
+    margin: 0;
+    color: #ffffff;
     font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-  }
-  .contact-email {
-    font-size: 1.05rem;
     font-weight: 300;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 3px;
+    opacity: 0;
+    background: rgba(26, 24, 21, 0.45); /* Elegant studio tint overlay */
+    transition: opacity 0.4s ease;
+    z-index: 10;
+  }
+
+  .collection-block h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
     letter-spacing: 0.02em;
-    transition: border-color 0.2s;
-    margin-bottom: 3rem;
-    display: inline-block;
+    margin: 0 0 0.4rem 0;
+    color: var(--ink);
   }
-  .contact-email:hover { border-color: var(--accent); }
-  .social-row { display: flex; gap: 2.5rem; }
-  .social-link {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+
+  .collection-block p.series-description {
+    font-family: var(--serif);
+    font-size: 1.05rem;
     color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    max-width: 650px;
+    line-height: 1.7;
+    margin: 0;
   }
-  .social-link:hover { color: var(--ink); }
+
+  /* Hover Actions */
+  .collection-block .image-frame:hover .placeholder,
+  .collection-block .image-frame:hover img {
+    filter: brightness(0.75);
+  }
+
+  .collection-block .image-frame:hover h2.enter-label {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .collection-block .image-frame {
+      aspect-ratio: 4 / 3; /* Shifts down seamlessly into balanced mobile proportions */
+    }
+    .collection-block h3 { font-size: 1.4rem; }
+  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -271,55 +207,33 @@
 
 <!-- FEATURED WORKS -->
 <section id="featured">
-  <p class="section-label fade-in">Selected works</p>
-  <div class="featured-grid">
-    <div class="feat-main fade-in">
-      <div class="feat-thumb placeholder" style="height:560px">
-        <div class="ph-icon"></div><span>Blue Figures series</span>
-      </div>
-      <div class="feat-meta">
-        <p class="feat-title">Blue Figures</p>
-        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; Series of 12</p>
-      </div>
+  <p class="section-label fade-in">Curated Collections</p>
+  
+  <div class="collection-rows">
+
+    <div class="collection-block fade-in">
+        <a href="paintings.html#blue-figures" class="image-frame">
+            <div class="placeholder"><div class="ph-icon"></div><span>Featured Cover Canvas</span></div>
+            <h2 class="enter-label">Enter Collection</h2>
+        </a>
+        <h3>Blue Figures</h3>
+        <p class="series-description">Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.</p>
     </div>
-    <div class="fade-in" style="transition-delay:0.05s">
-      <div class="feat-thumb placeholder">
-        <div class="ph-icon"></div><span>Shifting Bodies</span>
-      </div>
-      <div class="feat-meta">
-        <p class="feat-title">Shifting Bodies</p>
-        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2023</p>
-      </div>
+
+    <div class="collection-block fade-in" style="transition-delay: 0.05s;">
+        <a href="paintings.html#shifting-bodies" class="image-frame">
+            <div class="placeholder"><div class="ph-icon"></div><span>Featured Cover Canvas</span></div>
+            <h2 class="enter-label">Enter Collection</h2>
+        </a>
+        <h3>Shifting Bodies</h3>
+        <p class="series-description">Funded by a United Arts Council grant — this series examines the body in flux, shaped by forces both internal and cultural.</p>
     </div>
-    <div class="fade-in" style="transition-delay:0.1s">
-      <div class="feat-thumb placeholder">
-        <div class="ph-icon"></div><span>Study</span>
-      </div>
-      <div class="feat-meta">
-        <p class="feat-title">Figure Study</p>
-        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2024</p>
-      </div>
-    </div>
-    <div class="fade-in" style="transition-delay:0.05s">
-      <div class="feat-thumb placeholder">
-        <div class="ph-icon"></div><span>Figures</span>
-      </div>
-      <div class="feat-meta">
-        <p class="feat-title">The Figures</p>
-        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2022</p>
-      </div>
-    </div>
-    <div class="fade-in" style="transition-delay:0.1s">
-      <div class="feat-thumb placeholder">
-        <div class="ph-icon"></div><span>Commission</span>
-      </div>
-      <div class="feat-meta">
-        <p class="feat-title">Cosmos</p>
-        <p class="feat-detail">Commission &nbsp;·&nbsp; 2024</p>
-      </div>
-    </div>
+
   </div>
-  <a href="paintings.html" class="featured-cta fade-in">View all paintings</a>
+  
+  <div style="text-align: center; margin-top: 4rem;">
+     <a href="paintings.html" class="featured-cta fade-in">View All Gallery Collections</a>
+  </div>
 </section>
 
 <!-- STATEMENT STRIP -->
