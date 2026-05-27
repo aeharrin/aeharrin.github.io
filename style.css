@@ -126,30 +126,79 @@ nav#main-nav.scrolled {
 .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
 .hero-image-block { position: relative; height: 75vh; max-height: 680px; width: 100%; }
 
-/* ── SELECTED WORKS GRID COMPONENT ── */
-#featured { padding: 6rem 4vw; width: 100%; clear: both; }
-.featured-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 2.5rem 1.5rem;
+/* ==========================================================================
+   SELECTED WORKS GRID COMPONENT (REPAIRED & RECONSTRUCTED)
+   ========================================================================== */
+#featured { 
+  padding: 6rem 4vw; 
+  width: 100%;
+  max-width: 1200px; /* Aligns perfectly with your hero section margins */
+  margin: 0 auto;
+  clear: both; /* Prevents the hero section above from spilling into this layout */
 }
-.feat-main { grid-row: span 2; display: flex; flex-direction: column; }
-.feat-thumb { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; }
-.feat-thumb img, .feat-thumb .placeholder { width: 100%; height: 100%; object-fit: cover; }
-.feat-meta { padding: 1rem 0 0; background: transparent; }
-.feat-title { font-size: 0.95rem; font-weight: 400; color: var(--ink); }
+
+/* 1. Establish a strict 4-column framework */
+.featured-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* 4 equal columns (25% width each) */
+  gap: 3rem 2rem !important; /* Generous gap (vertical horizontal) prevents text overlaps */
+  width: 100%;
+  align-items: start;
+}
+
+/* 2. Force the main feature card to span exactly 2 columns (50% width) and 2 rows high */
+.feat-main { 
+  grid-column: span 2 !important; 
+  grid-row: span 2 !important; 
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 3. Keep all image container frames bound strictly to their layout slots */
+.feat-thumb { 
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important; /* Locks every piece into a matching portrait gallery frame */
+  overflow: hidden;
+  background-color: #d8d3c8;
+}
+
+/* Force the raw image files or placeholders to fill the 3:4 frame perfectly */
+.feat-thumb img, 
+.feat-thumb .placeholder { 
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 4. Keep titles and subtitles nested safely under their respective frames */
+.feat-meta { 
+  padding: 0.8rem 0 0 0 !important;
+  width: 100%;
+}
+
+.feat-title { 
+  font-family: var(--serif);
+  font-size: 1rem !important; 
+  font-weight: 400; 
+  color: var(--ink);
+  line-height: 1.4;
+}
+
 .feat-detail {
   font-family: var(--mono);
-  font-size: 0.58rem;
+  font-size: 0.58rem !important;
   letter-spacing: 0.08em;
   color: var(--muted);
+  text-transform: uppercase;
   margin-top: 0.25rem;
 }
+
+/* 5. Force the CTA link button to sit gracefully completely below the grid grid rows */
 .featured-cta {
-  margin-top: 4rem;
-  display: inline-block;
+  display: inline-block !important;
+  margin-top: 4rem !important;
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink);
@@ -158,7 +207,42 @@ nav#main-nav.scrolled {
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
-.featured-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+.featured-cta:hover { 
+  color: var(--accent); 
+  border-color: var(--accent); 
+}
+
+/* ==========================================================================
+   MOBILE & TABLET ADAPTABILITY FOR THE FEATURED GRID
+   ========================================================================== */
+@media (max-width: 900px) {
+  .featured-grid { 
+    grid-template-columns: repeat(2, 1fr) !important; /* Drops to a 2-column stacked setup on tablets */
+    gap: 2.5rem 1.5rem !important; 
+  }
+  .feat-main { 
+    grid-column: span 2 !important; /* Main item stretches wide on mobile screens */
+    grid-row: span 1 !important;
+  }
+  .featured-cta {
+    margin-top: 3rem !important;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto; /* Centers the action button layout on smaller touch displays */
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-grid { 
+    grid-template-columns: 100% !important; /* Pure uniform 1-column stack on smartphones */
+    gap: 3rem !important;
+  }
+  .feat-main { 
+    grid-column: span 1 !important; 
+  }
+}
 
 /* ── STATEMENT STRIP ── */
 #statement-strip {
