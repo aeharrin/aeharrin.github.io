@@ -56,7 +56,37 @@
   .series-nav a:hover { color: var(--ink); }
   .series-nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
 
-
+  .series-header { 
+    margin-bottom: 3rem; 
+  }
+  .series-title { 
+    font-size: clamp(1.8rem, 3vw, 2.6rem); 
+    font-weight: 300; 
+    line-height: 1.1; 
+    margin-bottom: 0.6rem; 
+  }
+  .series-title em { 
+    font-style: italic; 
+    color: var(--accent); 
+  }
+  .series-count { 
+    font-family: var(--mono); 
+    font-size: 0.6rem; 
+    letter-spacing: 0.15em; 
+    text-transform: uppercase; 
+    color: var(--muted); 
+  }
+  .series-desc { 
+    margin-top: 0.75rem; 
+    font-size: 0.95rem; 
+    font-weight: 300; 
+    color: var(--muted); 
+    max-width: 58ch; 
+    line-height: 1.75; 
+  }
+  .series-section.alt-bg { 
+    background: var(--light-bg);
+  }
 
 
   /* ── EARLIER WORK ── */
