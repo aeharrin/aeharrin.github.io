@@ -1,62 +1,817 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashley Harrington Art | Portfolio</title>
-    <link rel="stylesheet" href="assets/css/art.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashley Harrington Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F4F0E8;
+    --ink: #1a1815;
+    --muted: #6b6760;
+    --accent: #8B2E2E;
+    --border: rgba(26,24,21,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4vw;
+    background: var(--cream);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav.scrolled { border-color: var(--border); }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4vw;
+    gap: 4rem;
+    padding-top: 5rem;
+  }
+  .hero-text { padding-left: 2vw; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 36ch;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+  .hero-image-block {
+    position: relative;
+    height: 75vh;
+    max-height: 680px;
+  }
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #d8d3c8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .hero-placeholder span {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .hero-placeholder .img-icon {
+    width: 40px;
+    height: 32px;
+    border: 1.5px solid #b5b0a6;
+    border-radius: 2px;
+    position: relative;
+  }
+  .hero-placeholder .img-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 6px; left: 6px;
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #b5b0a6;
+  }
+  .hero-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: #999;
+  }
+
+  /* SECTION STRUCTURE */
+  section { padding: 7rem 4vw; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* WORK */
+  #work { background: var(--cream); }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .work-item { position: relative; cursor: pointer; }
+  .work-thumb {
+    aspect-ratio: 3/4;
+    background: #d8d3c8;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: filter 0.3s;
+  }
+  .work-thumb:hover { filter: brightness(0.93); }
+  .work-thumb span {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+  .work-meta { padding: 1rem 0 0; }
+  .work-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 0.15rem;
+  }
+  .work-detail {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  /* Wide items */
+  .work-item.wide { grid-column: span 2; }
+  .work-item.wide .work-thumb { aspect-ratio: 16/9; }
+
+  /* ABOUT */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    background: #ede9df;
+  }
+  .about-image-block {
+    position: sticky;
+    top: 7rem;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #cec9be;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .about-photo span {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+  .about-content { padding-top: 0.5rem; }
+  .about-name {
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+  .about-name em { font-style: italic; color: var(--accent); }
+  .statement-block { margin-bottom: 2.5rem; }
+  .statement-block h3 {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .statement-block p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--ink);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .about-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  /* EXHIBITIONS */
+  #exhibitions { background: var(--cream); }
+  .exhibitions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 6rem;
+  }
+  .ex-col h3 {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .ex-list { list-style: none; }
+  .ex-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .ex-year {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--muted);
+    min-width: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+  .ex-title { font-size: 0.9rem; font-weight: 300; line-height: 1.4; }
+  .ex-venue {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 0.15rem;
+  }
+  .ex-solo {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 1px 5px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+  }
+  .press-list { list-style: none; }
+  .press-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .press-item a {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+  }
+  .press-item a:hover { color: var(--accent); }
+  .press-source {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .award-block {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border-left: 2px solid var(--accent);
+  }
+  .award-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .award-title { font-size: 0.95rem; font-weight: 400; }
+  .award-org { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+  }
+  .contact-heading {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .contact-heading em { font-style: italic; color: #c4a882; }
+  .contact-sub {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,240,232,0.45);
+    margin-bottom: 3rem;
+  }
+  .contact-email {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(244,240,232,0.3);
+    padding-bottom: 3px;
+    letter-spacing: 0.02em;
+    transition: border-color 0.2s;
+    margin-bottom: 3.5rem;
+  }
+  .contact-email:hover { border-color: #c4a882; }
+  .social-row { display: flex; gap: 2.5rem; align-items: center; justify-content: center; }
+  .social-link {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,240,232,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(244,240,232,0.08);
+    padding: 1.5rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    color: rgba(244,240,232,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+    .hero-image-block { height: 55vw; max-height: 400px; order: -1; }
+    .hero-text { padding-left: 0; }
+    .work-grid { grid-template-columns: 1fr 1fr; }
+    .work-item.wide { grid-column: span 2; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-block { position: static; }
+    .exhibitions-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1.2rem 5vw; }
+    .nav-links { gap: 1.5rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item.wide { grid-column: span 1; }
+    .work-item.wide .work-thumb { aspect-ratio: 4/3; }
+    section { padding: 5rem 5vw; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header id="site-header" class="gallery-container">
-        <div class="header-inner">
-            <div class="logo">
-                <a href="index.html">Ashley Harrington</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="faq.html">FAQ / Inquiries</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<nav id="main-nav">
+  <a href="#hero" class="nav-name">Ashley Harrington</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#exhibitions">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <!-- Main Content Container -->
-    <main class="gallery-container">
-        <section class="collection-rows">
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Raleigh, North Carolina</p>
+    <h1 class="hero-title">
+      Somatic.<br>
+      <em>Intuitive.</em><br>
+      Abstract.
+    </h1>
+    <p class="hero-tagline">Oil and acrylic paintings that trace the interior — where emotion meets identity, and the body remembers what the mind forgets.</p>
+    <a href="#work" class="hero-cta">View work</a>
+  </div>
+  <div class="hero-image-block fade-in" style="transition-delay: 0.15s;">
+    <div class="hero-placeholder">
+      <div class="img-icon"></div>
+      <span>Featured work</span>
+    </div>
+    <span class="hero-counter">01 / 01</span>
+  </div>
+</section>
 
-            <!-- Series Block 1 -->
-            <div class="collection-block">
-                <a href="shifting-bodies.html" class="image-frame">
-                    <img src="images/Shifting Bodies Hero.webp" alt="Horizontal shifting bodies somatic painting" />
-                    <h2>Enter Collection</h2>
-                </a>
-                <h3>Shifting Bodies</h3>
-                <p>An exploration of intuitive physical form, movement, and transition.</p>
-            </div>
+<!-- WORK -->
+<section id="work">
+  <p class="section-label fade-in">Selected works</p>
+  <div class="work-grid">
 
-            <!-- Series Block 2 -->
-            <div class="collection-block">
-                <a href="blue-figures.html" class="image-frame">
-                    <img src="images/The Blue Figures Hero.webp" alt="Horizontal blue figures landscape intuitive art" />
-                    <h2>Enter Collection</h2>
-                </a>
-                <h3>The Blue Figures</h3>
-                <p>Monochromatic, layered studies focused on internal landscapes and presence.</p>
-            </div>
+    <div class="work-item wide fade-in">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Painting</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">Shifting Bodies</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; 2023</p>
+      </div>
+    </div>
 
-        </section>
-    </main>
+    <div class="work-item fade-in" style="transition-delay:0.05s">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Painting</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">The Figures</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; 2022</p>
+      </div>
+    </div>
 
-    <!-- Global Footer -->
-    <footer id="site-footer">
-        <div class="gallery-container">
-            <p>&copy; 2026 Ashley Harrington Art. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div class="work-item fade-in" style="transition-delay:0.1s">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Painting</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">Lost in Nature</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; 2021–2025</p>
+      </div>
+    </div>
+
+    <div class="work-item fade-in" style="transition-delay:0.05s">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Commission</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">Cosmos</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; 2024</p>
+      </div>
+    </div>
+
+    <div class="work-item fade-in" style="transition-delay:0.1s">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Commission</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">Triptych</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; Duke-Raleigh Cancer Center, 2022</p>
+      </div>
+    </div>
+
+    <div class="work-item fade-in" style="transition-delay:0.15s">
+      <div class="work-thumb">
+        <div class="img-icon"></div>
+        <span>Painting</span>
+      </div>
+      <div class="work-meta">
+        <p class="work-title">Blue Sass</p>
+        <p class="work-detail">Acrylic on canvas &nbsp;·&nbsp; 2021</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-image-block fade-in">
+    <div class="about-photo">
+      <div class="img-icon"></div>
+      <span>Artist photo</span>
+    </div>
+  </div>
+  <div class="about-content fade-in" style="transition-delay:0.1s">
+    <h2 class="about-name">Ashley<br><em>Harrington</em></h2>
+
+    <div class="statement-block">
+      <h3>Artist statement</h3>
+      <p>My art explores self-awareness through emotional observance. Shaped by societal norms and my own personal expectations, I developed a habit of concealing my emotions, causing a sense of disconnection and identity loss.</p>
+      <p>Through my figurative art, I aim to reconnect with these emotions to deepen my self-understanding.</p>
+      <p>My creative process is a journey of mental exploration, grounded in meditation, journaling, and drawing. My rational brain is well-versed in controlling my emotions, so it takes a lot of practice and patience to allow intuitive play into my process.</p>
+      <p>My paintings are built up in layers, allowing the initial layers to be intuitive without worrying about the outcome. It is in these initial layers that my subconscious finds its voice, conveying emotions that I interpret and direct, shaping the overall feeling of the painting.</p>
+      <p>My art evolves alongside my internal exploration, serving as a mirror to reflect on who I am and how emotions have shaped my identity. I hope that my artwork provides viewers with a unique female perspective of self-discovery and encourages their own exploration of emotional awareness.</p>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="statement-block">
+      <h3>Bio</h3>
+      <p>Ashley Harrington is a self-taught painter from Raleigh, North Carolina, where she currently resides. Her art has been exhibited at Artspace, Duke University Hospitals, Cameron Art Museum, and Industrious co-working offices. She has independently hosted art shows featuring her figure paintings and received an Artist Support Grant from the United Arts Council of Raleigh and Wake County.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXHIBITIONS / CV -->
+<section id="exhibitions">
+  <p class="section-label fade-in">CV &amp; exhibitions</p>
+  <div class="exhibitions-grid">
+
+    <div class="fade-in">
+      <h3>Exhibitions</h3>
+      <ul class="ex-list">
+        <li class="ex-item">
+          <span class="ex-year">2025</span>
+          <div>
+            <span class="ex-title">Lost in Nature <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">WakeMed North Hospital, Wake Forest Guild of Artists</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2025</span>
+          <div>
+            <span class="ex-title">Hair Undone</span>
+            <span class="ex-venue">Wake Forest Guild of Artists</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2024</span>
+          <div>
+            <span class="ex-title">12x12 Member Showcase</span>
+            <span class="ex-venue">Artspace, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2024</span>
+          <div>
+            <span class="ex-title">29th Annual Juried Exhibition</span>
+            <span class="ex-venue">Fine Arts League of Cary</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2024</span>
+          <div>
+            <span class="ex-title">Small Treasures</span>
+            <span class="ex-venue">Cary Gallery of Artists</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2023</span>
+          <div>
+            <span class="ex-title">Shifting Bodies Pop-up <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">United Arts Grant, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2023</span>
+          <div>
+            <span class="ex-title">Process Behind The Figures <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">Artist's Home Studio, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2022</span>
+          <div>
+            <span class="ex-title">The Figures Collection <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">Artist's Home Studio, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2022</span>
+          <div>
+            <span class="ex-title">State of the Art</span>
+            <span class="ex-venue">Cameron Art Museum, Wilmington</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2022</span>
+          <div>
+            <span class="ex-title">Fresh</span>
+            <span class="ex-venue">Artspace, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2021</span>
+          <div>
+            <span class="ex-title">Lost in Nature <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">Duke University Hospital, Durham</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2021</span>
+          <div>
+            <span class="ex-title">Lost in Nature <span class="ex-solo">Solo</span></span>
+            <span class="ex-venue">Industrious Wells Fargo Capital Center</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="award-block fade-in">
+        <p class="award-label">Award</p>
+        <p class="award-title">Artist Support Grant</p>
+        <p class="award-org">United Arts Council of Raleigh &amp; Wake County, 2023</p>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:0.1s">
+      <h3>Selected commissions</h3>
+      <ul class="ex-list">
+        <li class="ex-item">
+          <span class="ex-year">2024</span>
+          <div>
+            <span class="ex-title">Sunflower Series (3 paintings)</span>
+            <span class="ex-venue">Private collector, Durham</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2024</span>
+          <div>
+            <span class="ex-title">Cosmos</span>
+            <span class="ex-venue">Private collector, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2022</span>
+          <div>
+            <span class="ex-title">Triptych</span>
+            <span class="ex-venue">Duke-Raleigh Cancer Center</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2021</span>
+          <div>
+            <span class="ex-title">Moments Between the Lines</span>
+            <span class="ex-venue">Private collector, Raleigh</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2021</span>
+          <div>
+            <span class="ex-title">Blue Sass &amp; Pretty in Pink</span>
+            <span class="ex-venue">Private collectors, NC</span>
+          </div>
+        </li>
+        <li class="ex-item">
+          <span class="ex-year">2021</span>
+          <div>
+            <span class="ex-title">Stir It Up and With a Twist (Diptych)</span>
+            <span class="ex-venue">Private collector, Raleigh</span>
+          </div>
+        </li>
+      </ul>
+
+      <h3 style="margin-top: 3rem;">Press &amp; media</h3>
+      <ul class="press-list">
+        <li class="press-item">
+          <a href="https://www.youtube.com/watch?v=BBYQ6viIQ9k" target="_blank" rel="noopener">Expanding Your Awareness with Ashley Harrington</a>
+          <p class="press-source">Level Up Artist Podcast &nbsp;·&nbsp; Ep. 155, March 2024</p>
+        </li>
+        <li class="press-item">
+          <a href="https://boldjourney.com/news/meet-ashley-harrington/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-source">Bold Journey &nbsp;·&nbsp; Nov 2023</p>
+        </li>
+        <li class="press-item">
+          <a href="https://canvasrebel.com/meet-ashley-harrington/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-source">Canvas Rebel Raleigh Magazine &nbsp;·&nbsp; Dec 2022</p>
+        </li>
+        <li class="press-item">
+          <a href="https://voyageraleigh.com/interview/meet-ashley-harrington-of-midtown-north-hills/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-source">Voyage Raleigh Magazine &nbsp;·&nbsp; Aug 2021</p>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-heading fade-in">Let's<br><em>connect.</em></h2>
+  <p class="contact-sub fade-in">Commissions, inquiries &amp; press</p>
+  <a href="mailto:hello@ashleyharringtonart.com" class="contact-email fade-in">hello@ashleyharringtonart.com</a>
+  <div class="social-row fade-in">
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener" class="social-link">Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ashley Harrington Art</p>
+  <p>Raleigh, North Carolina</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
