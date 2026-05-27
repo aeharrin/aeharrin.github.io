@@ -4,172 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashley Harrington Art</title>
-<meta name="description" content="Somatic, intuitive abstract paintings and fine art studies by Ashley Harrington, based in Raleigh, North Carolina.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 0 4vw;
-    gap: 4rem;
-    padding-top: 5rem;
-  }
-  .hero-text { padding-left: 2vw; }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-  .hero-title {
-    font-size: clamp(3.5rem, 7vw, 6rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 2rem;
-  }
-  .hero-title em { font-style: italic; color: var(--accent); }
-  .hero-tagline {
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 36ch;
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-  }
-  .hero-cta {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
-  .hero-image-block { position: relative; height: 75vh; max-height: 680px; }
 
-  /* ── FEATURED ── */
- /* ── CURATED EDITORIAL ROWS ── */
-  #featured { 
-    padding: 6rem 4vw; 
+<style>
+  /* ── HOMEPAGE HERO SPACING ── */
+  #hero {
+    padding: 10rem 4vw 4rem; /* Top padding keeps text from slipping under the navigation menu */
     max-width: 1200px;
     margin: 0 auto;
   }
+  .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-tagline { font-size: 1.1rem; color: var(--muted); max-width: 50ch; line-height: 1.75; }
+
+  /* ── EDITORIAL ROW GRID ── */
+  #featured { padding: 4rem 4vw 6rem; max-width: 1200px; margin: 0 auto; }
+  .collection-rows { display: grid; grid-template-columns: 100%; gap: 6rem; }
+  .collection-block { display: flex; flex-direction: column; width: 100%; }
   
-  .collection-rows {
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 5rem; /* Generous vertical white space between series blocks */
-    margin: 2rem 0;
-  }
-
-  .collection-block {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
   .collection-block .image-frame {
-    display: grid;
-    grid-template-areas: "overlay";
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Clean cinematic desktop frame balance */
-    overflow: hidden;
-    position: relative;
-    text-decoration: none;
-    margin-bottom: 1.5rem;
+    display: grid; grid-template-areas: "overlay";
+    width: 100%; aspect-ratio: 16 / 9; overflow: hidden; position: relative;
   }
-
-  .collection-block img, 
-  .collection-block .placeholder {
-    grid-area: overlay;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 0.4s ease;
+  .collection-block img, .collection-block .placeholder {
+    grid-area: overlay; width: 100%; height: 100%; object-fit: cover; transition: filter 0.4s ease;
   }
-
-  /* The clean minimal text overlay revealed on hover */
   .collection-block h2.enter-label {
-    grid-area: overlay;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    color: #ffffff;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    font-weight: 300;
-    opacity: 0;
-    background: rgba(26, 24, 21, 0.45); /* Elegant studio tint overlay */
-    transition: opacity 0.4s ease;
-    z-index: 10;
+    grid-area: overlay; display: flex; justify-content: center; align-items: center; margin: 0;
+    color: #ffffff; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0; background: rgba(26, 24, 21, 0.45); transition: opacity 0.4s ease; z-index: 10;
   }
+  .collection-block h3 { font-size: 1.8rem; font-weight: 300; margin: 1.5rem 0 0.5rem 0; color: var(--ink); }
+  .collection-block p { font-size: 1.05rem; color: var(--muted); max-width: 650px; }
 
-  .collection-block h3 {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin: 0 0 0.4rem 0;
-    color: var(--ink);
-  }
-
-  .collection-block p.series-description {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--muted);
-    max-width: 650px;
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  /* Hover Actions */
-  .collection-block .image-frame:hover .placeholder,
-  .collection-block .image-frame:hover img {
-    filter: brightness(0.75);
-  }
-
-  .collection-block .image-frame:hover h2.enter-label {
-    opacity: 1;
-  }
+  /* Hover States */
+  .collection-block .image-frame:hover img,
+  .collection-block .image-frame:hover .placeholder { filter: brightness(0.75); }
+  .collection-block .image-frame:hover h2.enter-label { opacity: 1; }
 
   @media (max-width: 768px) {
-    .collection-block .image-frame {
-      aspect-ratio: 4 / 3; /* Shifts down seamlessly into balanced mobile proportions */
-    }
-    .collection-block h3 { font-size: 1.4rem; }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    #hero { grid-template-columns: 1fr; padding-top: 6rem; }
-    .hero-image-block { height: 55vw; max-height: 400px; order: -1; }
-    .hero-text { padding-left: 0; }
-    .featured-grid { grid-template-columns: 1fr 1fr; }
-    .feat-main { grid-row: span 1; grid-column: span 2; }
-    .feat-main .feat-thumb { aspect-ratio: 4/3; height: auto; }
-    #statement-strip { grid-template-columns: 1fr; gap: 1.5rem; }
-    #about-strip { grid-template-columns: 1fr; gap: 3rem; }
-  }
-  @media (max-width: 600px) {
-    #hero, #featured, #statement-strip, #about-strip, #contact-strip { padding-left: 5vw; padding-right: 5vw; }
-    .featured-grid { grid-template-columns: 1fr; }
-    .feat-main { grid-column: span 1; }
-    .feat-main .feat-thumb { aspect-ratio: 4/3; height: auto; }
+    .collection-block .image-frame { aspect-ratio: 4 / 3; }
   }
 </style>
 </head>
@@ -181,114 +57,47 @@
     <li><a href="paintings.html">Work</a></li>
     <li><a href="shop.html">Shop</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="about.html#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-text fade-in">
-    <p class="hero-eyebrow">Raleigh, North Carolina</p>
-    <h1 class="hero-title">
-      Somatic.<br>
-      <em>Intuitive.</em><br>
-      Abstract.
-    </h1>
-    <p class="hero-tagline">Oil and acrylic paintings that trace the interior — where emotion meets identity, and the body remembers what the mind forgets.</p>
-    <a href="paintings.html" class="hero-cta">View work</a>
-  </div>
-  <div class="hero-image-block fade-in" style="transition-delay:0.15s">
-    <div class="placeholder" style="height:100%">
-      <div class="ph-icon"></div>
-      <span>Featured painting</span>
-    </div>
-  </div>
+  <h1 class="hero-title">Somatic. <em>Intuitive.</em> Abstract.</h1>
+  <p class="hero-tagline">Paintings that trace the interior — where emotion meets identity, and the body remembers what the mind forgets.</p>
 </section>
 
-<!-- FEATURED WORKS -->
 <section id="featured">
-  <p class="section-label fade-in">Curated Collections</p>
-  
   <div class="collection-rows">
-
     <div class="collection-block fade-in">
         <a href="paintings.html#blue-figures" class="image-frame">
-            <div class="placeholder"><div class="ph-icon"></div><span>Featured Cover Canvas</span></div>
+            <div class="placeholder"><div class="ph-icon"></div><span>Blue Figures Cover</span></div>
             <h2 class="enter-label">Enter Collection</h2>
         </a>
         <h3>Blue Figures</h3>
-        <p class="series-description">Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.</p>
+        <p>Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.</p>
     </div>
 
-    <div class="collection-block fade-in" style="transition-delay: 0.05s;">
+    <div class="collection-block fade-in">
         <a href="paintings.html#shifting-bodies" class="image-frame">
-            <div class="placeholder"><div class="ph-icon"></div><span>Featured Cover Canvas</span></div>
+            <div class="placeholder"><div class="ph-icon"></div><span>Shifting Bodies Cover</span></div>
             <h2 class="enter-label">Enter Collection</h2>
         </a>
         <h3>Shifting Bodies</h3>
-        <p class="series-description">Funded by a United Arts Council grant — this series examines the body in flux, shaped by forces both internal and cultural.</p>
-    </div>
-
-  </div>
-  
-  <div style="text-align: center; margin-top: 4rem;">
-     <a href="paintings.html" class="featured-cta fade-in">View All Gallery Collections</a>
-  </div>
-</section>
-
-<!-- STATEMENT STRIP -->
-<section id="statement-strip">
-  <p class="strip-label fade-in">Artist statement</p>
-  <blockquote class="strip-quote fade-in" style="transition-delay:0.1s">
-    My paintings are built up in layers — allowing the initial layers to be intuitive without worrying about the outcome. It is in these layers that my subconscious finds its voice, conveying <em>emotions that I interpret and direct,</em> shaping the overall feeling of the painting.
-  </blockquote>
-</section>
-
-<!-- ABOUT STRIP -->
-<section id="about-strip">
-  <div class="about-photo-block fade-in">
-    <div class="about-photo placeholder">
-      <div class="ph-icon"></div><span>Artist photo</span>
+        <p>Funded by a United Arts Council grant — this series examines the body in flux, shaped by forces both internal and cultural.</p>
     </div>
   </div>
-  <div class="about-text-block fade-in" style="transition-delay:0.1s">
-    <h2 class="about-heading">Ashley<br><em>Harrington</em></h2>
-    <p class="about-body">Ashley Harrington is a self-taught painter from Raleigh, North Carolina. Her figurative and abstract work explores self-awareness through emotional observance — painting as a practice of reconnection, identity, and inner excavation.</p>
-    <p class="about-body">Her work has been exhibited at Artspace, Duke University Hospitals, Cameron Art Museum, and Industrious offices across the Triangle. She is a 2023 United Arts Council grant recipient.</p>
-    <a href="about.html" class="about-link">Full bio & CV</a>
-  </div>
 </section>
-
-<!-- CONTACT -->
-<section id="contact-strip">
-  <h2 class="contact-heading fade-in">Let's<br><em>connect.</em></h2>
-  <p class="contact-sub fade-in">Commissions &nbsp;·&nbsp; Inquiries &nbsp;·&nbsp; Press</p>
-  <a href="mailto:hello@ashleyharringtonart.com" class="contact-email fade-in">hello@ashleyharringtonart.com</a>
-  <div class="social-row fade-in">
-    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener" class="social-link">Instagram</a>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 Ashley Harrington Art &nbsp;·&nbsp; Raleigh, NC</p>
-  <nav class="footer-links">
-    <a href="paintings.html">Work</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="mailto:hello@ashleyharringtonart.com">Contact</a>
-    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener">Instagram</a>
-  </nav>
-</footer>
 
 <script>
+  // Handles navigation background scroll animation
   const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-  });
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+
+  // Handles smooth fade-in animations on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.06 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
