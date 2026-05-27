@@ -379,3 +379,180 @@ footer .footer-links a:hover { color: rgba(244,240,232,0.7); }
   .nav-links { gap: 1.2rem; }
   .nav-links a { font-size: 0.6rem; }
 }
+
+
+/* ==========================================================================
+   PAINTINGS GALLERY GRID REPAIR (`paintings.html`)
+   ========================================================================== */
+.series-section {
+  padding: 6rem 4vw !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  clear: both;
+}
+
+/* Forces a strict, well-spaced 4-column layout for your collections */
+.gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 3.5rem 1.5rem !important; /* Generous bottom gap completely prevents caption overlaps */
+  width: 100%;
+  align-items: start;
+}
+
+/* Special utility class adjustment for your 3-column Earlier Work tier */
+.gallery-grid.three-col {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 4rem 2rem !important;
+}
+
+/* Individual artwork card architecture */
+.work-item {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100%;
+}
+
+/* Locks the thumbnail frames safely into a pristine 3:4 fine art proportion */
+.work-thumb {
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.work-thumb img, 
+.work-thumb .placeholder {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Isolates metrics for headers directly beneath the frames */
+.work-meta {
+  padding: 1rem 0 0 0 !important;
+  width: 100%;
+}
+
+.work-title {
+  font-family: var(--serif);
+  font-size: 0.95rem !important;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.work-detail {
+  font-family: var(--mono);
+  font-size: 0.58rem !important;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+
+/* ==========================================================================
+   PRINT SHOP GRID REPAIR (`shop.html`)
+   ========================================================================== */
+.shop-section {
+  padding: 6rem 4vw !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  clear: both;
+}
+
+/* Forces an exact 4-column framework for shop cards */
+.shop-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 3.5rem 1.5rem !important;
+  width: 100%;
+  align-items: start;
+}
+
+.shop-item {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100%;
+}
+
+/* Establishes a square 1:1 format frame rule for store miniatures */
+.shop-thumb {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Override utility: forces standard prints back into a neat 3:4 portrait style */
+.shop-thumb.portrait {
+  aspect-ratio: 3 / 4 !important;
+}
+
+.shop-thumb img, 
+.shop-thumb .placeholder {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.shop-meta {
+  padding: 1rem 0 0 0 !important;
+  width: 100%;
+}
+
+.shop-title {
+  font-family: var(--serif);
+  font-size: 0.95rem !important;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.shop-price {
+  font-family: var(--mono);
+  font-size: 0.62rem !important;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-top: 0.25rem;
+}
+
+.shop-size {
+  font-family: var(--mono);
+  font-size: 0.58rem !important;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES FOR BOTH GALLERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .gallery-grid, 
+  .gallery-grid.three-col, 
+  .shop-grid { 
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 3rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid, 
+  .gallery-grid.three-col, 
+  .shop-grid { 
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 2.5rem 1.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid, 
+  .gallery-grid.three-col, 
+  .shop-grid { 
+    grid-template-columns: 100% !important; 
+    gap: 3rem !important;
+  }
+}
