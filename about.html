@@ -272,13 +272,15 @@
 <script>
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) { nav.classList.add('scrolled'); nav.classList.remove('dark-bg'); }
-    else { nav.classList.remove('scrolled'); nav.classList.add('dark-bg'); }
+    if (window.scrollY > 30) { 
+      nav.classList.add('scrolled'); 
+      nav.classList.remove('dark-bg'); 
+    } else { 
+      nav.classList.remove('scrolled'); 
+      // Only keep this next line active on pages with a pure dark header background, like about.html!
+      if(window.location.pathname.includes('about.html')) { nav.classList.add('dark-bg'); }
+    }
   });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
