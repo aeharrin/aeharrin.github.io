@@ -1,3 +1,6 @@
+/* ==========================================================================
+   CLEAN GALLERY STYLESHEET
+   ========================================================================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -14,7 +17,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  background: var(--cream); /* Pristine gallery environment */
   color: var(--ink);
   font-family: var(--serif);
   font-weight: 300;
@@ -22,7 +25,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAV BAR FIXED & SECURED ── */
+/* ── NAVIGATION BAR ── */
 nav#main-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -31,36 +34,17 @@ nav#main-nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 4vw;
-  background: var(--cream) !important; /* Forces solid background visibility */
+  background: var(--cream);
   border-bottom: 1px solid transparent;
-  transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* When window scrolls down */
+/* When scrolling down, it softens into a beautiful glass-like border */
 nav#main-nav.scrolled { 
   border-color: var(--border);
   padding: 1rem 4vw;
-  background: rgba(244, 240, 232, 0.95) !important;
+  background: rgba(244, 240, 232, 0.95);
   backdrop-filter: blur(10px);
-}
-
-/* Dark Layout Override for Pages like About Hero */
-nav#main-nav.dark-bg { 
-  background: var(--ink) !important; 
-}
-nav#main-nav.dark-bg .nav-name { 
-  color: var(--cream) !important; 
-}
-nav#main-nav.dark-bg .nav-links a { 
-  color: rgba(244,240,232,0.5) !important; 
-}
-nav#main-nav.dark-bg .nav-links a:hover,
-nav#main-nav.dark-bg .nav-links a.active { 
-  color: var(--cream) !important; 
-}
-nav#main-nav.dark-bg.scrolled {
-  background: rgba(26, 24, 21, 0.95) !important;
-  border-bottom-color: rgba(244,240,232,0.1);
 }
 
 .nav-name {
@@ -86,92 +70,19 @@ nav#main-nav.dark-bg.scrolled {
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--ink); }
-.nav-links a.active { border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
 
-/* ── GLOBAL LAYOUT UTILITIES ── */
-.section-label {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  max-width: 60px;
-  height: 1px;
-  background: var(--border);
-}
-
+/* --- RESPONSIVE UTILITIES --- */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ── VISUAL ARTWORK PLACEHOLDERS ── */
+/* --- ARTWORK COVERS --- */
 .placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 250px;
-  background: #d8d3c8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
+  width: 100%; height: 100%; min-height: 350px;
+  background: #d8d3c8; display: flex; align-items: center; justify-content: center;
 }
-.placeholder span {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #7a756c;
-}
-.ph-icon {
-  width: 36px; height: 28px;
-  border: 1.5px solid #b5b0a6;
-  border-radius: 2px;
-  position: relative;
-}
-.ph-icon::after {
-  content: '';
-  position: absolute;
-  bottom: 5px; left: 5px;
-  width: 0; height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 7px solid #b5b0a6;
-}
+.placeholder span { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7a756c; }
 
-/* ── SITE FOOTER ── */
-footer {
-  background: var(--ink);
-  padding: 3rem 4vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-footer p, footer a {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  color: rgba(244,240,232,0.3);
-  text-transform: uppercase;
-  text-decoration: none;
-}
-footer a:hover { color: rgba(244,240,232,0.7); }
-.footer-links { display: flex; gap: 2rem; }
-
-/* ── RESPONSIVE RESPONSIVENESS OVERRIDES ── */
 @media (max-width: 768px) {
   nav#main-nav { padding: 1.2rem 5vw; }
   .nav-links { gap: 1.2rem; }
-  .nav-links a { font-size: 0.6rem; }
-  footer { flex-direction: column; text-align: center; }
-  .footer-links { flex-direction: column; gap: 1rem; }
 }
