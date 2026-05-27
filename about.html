@@ -9,24 +9,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* ── ABOUT HERO ── */
+  /* ── REPAIRED ABOUT HERO ── */
   .about-hero {
     min-height: 80vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 5rem;
-    background: var(--ink);
-    color: var(--cream);
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    padding-top: 5.5rem; /* Forces content safely down past the top nav bar */
+    background: var(--ink) !important;
+    color: var(--cream) !important;
+    width: 100%;
   }
   .about-hero-img {
     min-height: 80vh;
     background: #2a2724;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+    display: flex !important; 
+    flex-direction: column !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    gap: 0.75rem;
+    width: 100%;
+  }
+  .about-hero-img img,
+  .about-hero-img .placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
   .about-hero-img span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,240,232,0.25); }
+  
   .about-hero-text {
-    padding: 6rem 5vw;
-    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5vw !important;
+    display: flex !important; 
+    flex-direction: column !important; 
+    justify-content: center !important;
   }
   .about-eyebrow {
     font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
@@ -41,21 +56,23 @@
     color: rgba(244,240,232,0.7); max-width: 44ch;
   }
 
-  /* ── STATEMENT ── */
+  /* ── REPAIRED STATEMENT SECTION ── */
   .statement-section {
-    padding: 7rem 4vw;
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 5rem;
-    background: var(--cream);
+    padding: 7rem 4vw !important;
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important; /* Fixed tight track alignment */
+    gap: 3rem !important;
+    background: var(--cream) !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
-  .statement-sidebar {}
   .sidebar-label {
     font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl;
     transform: rotate(180deg); height: fit-content;
+    display: block;
   }
-  .statement-body {}
   .statement-body p {
     font-size: 1.05rem; font-weight: 300; line-height: 1.85;
     color: var(--ink); margin-bottom: 1.5rem;
@@ -64,11 +81,19 @@
     font-size: 1.35rem; font-weight: 300; line-height: 1.6; font-style: italic; color: var(--accent);
   }
 
-  /* ── CV ── */
-  .cv-section { padding: 6rem 4vw; background: var(--light-bg); }
-  .cv-section + .cv-section { background: var(--cream); }
-
-  .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6rem; }
+  /* ── REPAIRED CV COLUMNS ── */
+  .cv-section { 
+    padding: 6rem 4vw !important; 
+    background: var(--light-bg) !important; 
+    width: 100%;
+  }
+  .cv-grid { 
+    display: grid !important; 
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 0 6rem !important; 
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
   .cv-col-title {
     font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
@@ -77,11 +102,11 @@
   }
   .cv-list { list-style: none; }
   .cv-item {
-    display: flex; gap: 1.5rem; padding: 0.7rem 0;
+    display: flex !important; gap: 1.5rem; padding: 0.7rem 0;
     border-bottom: 1px solid var(--border); align-items: baseline;
   }
   .cv-year { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); min-width: 2.5rem; }
-  .cv-title { font-size: 0.9rem; font-weight: 300; line-height: 1.4; }
+  .cv-title { font-size: 0.9rem; font-weight: 300; line-height: 1.4; color: var(--ink); }
   .cv-sub { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); display: block; margin-top: 0.1rem; }
   .cv-solo {
     display: inline-block; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.1em;
@@ -89,9 +114,7 @@
     padding: 1px 5px; border-radius: 2px; vertical-align: middle; margin-left: 0.4rem;
   }
 
-  .award-block {
-    margin-top: 2.5rem; padding: 1.5rem; border-left: 2px solid var(--accent);
-  }
+  .award-block { margin-top: 2.5rem; padding: 1.5rem; border-left: 2px solid var(--accent); }
   .award-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
   .award-title { font-size: 0.95rem; font-weight: 400; }
   .award-sub { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-top: 0.2rem; }
@@ -103,32 +126,25 @@
   .press-src { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-top: 0.1rem; }
 
   .affil-list { list-style: none; }
-  .affil-item { display: flex; gap: 1.5rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); align-items: baseline; }
 
   /* ── CONTACT ── */
   #contact {
-    background: var(--ink); color: var(--cream);
-    padding: 7rem 4vw;
-    display: flex; flex-direction: column; align-items: center; text-align: center;
+    background: var(--ink) !important; color: var(--cream) !important;
+    padding: 7rem 4vw !important;
+    display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important;
+    width: 100%;
   }
-  .contact-heading { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 0.75rem; }
-  .contact-heading em { font-style: italic; color: #c4a882; }
-  .contact-sub { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(244,240,232,0.35); margin-bottom: 2.5rem; }
-  .contact-email { font-size: 1.05rem; font-weight: 300; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(244,240,232,0.25); padding-bottom: 3px; transition: border-color 0.2s; margin-bottom: 3rem; display: inline-block; letter-spacing: 0.02em; }
-  .contact-email:hover { border-color: #c4a882; }
-  .social-row { display: flex; gap: 2.5rem; }
-  .social-link { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(244,240,232,0.4); text-decoration: none; transition: color 0.2s; }
-  .social-link:hover { color: var(--cream); }
 
+  /* ── MOBILE RESPONSIVENESS OVERRIDES ── */
   @media (max-width: 900px) {
-    .about-hero { grid-template-columns: 1fr; }
-    .about-hero-img { min-height: 50vw; }
-    .statement-section { grid-template-columns: 1fr; gap: 2rem; }
+    .about-hero { grid-template-columns: 1fr !important; padding-top: 7.5rem; }
+    .about-hero-img { min-height: 60vw; }
+    .statement-section { grid-template-columns: 1fr !important; gap: 1.5rem !important; padding-top: 4rem !important; }
     .sidebar-label { writing-mode: horizontal-tb; transform: none; }
-    .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-grid { grid-template-columns: 1fr !important; gap: 4rem !important; }
   }
   @media (max-width: 600px) {
-    .about-hero-text, .statement-section, .cv-section, #contact { padding-left: 5vw; padding-right: 5vw; }
+    .about-hero-text, .statement-section, .cv-section, #contact { padding-left: 6vw !important; padding-right: 6vw !important; }
   }
 </style>
 </head>
