@@ -50,7 +50,7 @@ nav#main-nav.scrolled {
 
 .nav-name {
   font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -61,7 +61,7 @@ nav#main-nav.scrolled {
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
 .nav-links a {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   font-weight: 300;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -89,7 +89,7 @@ nav#main-nav.scrolled {
 .hero-text { padding-left: 2vw; }
 .hero-eyebrow {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
@@ -104,7 +104,7 @@ nav#main-nav.scrolled {
 }
 .hero-title em { font-style: italic; color: var(--accent); }
 .hero-tagline {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 300;
   color: var(--muted);
   max-width: 36ch;
@@ -114,7 +114,7 @@ nav#main-nav.scrolled {
 .hero-cta {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink);
