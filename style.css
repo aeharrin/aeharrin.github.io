@@ -395,7 +395,7 @@ footer .footer-links a:hover { color: rgba(244,240,232,0.7); }
 /* Forces a strict, well-spaced 4-column layout for your collections */
 .gallery-grid {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 3.5rem 1.5rem !important; /* Generous bottom gap completely prevents caption overlaps */
   width: 100%;
   align-items: start;
