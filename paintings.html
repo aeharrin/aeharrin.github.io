@@ -569,20 +569,53 @@
     label.textContent = content.classList.contains('open') ? 'Hide earlier work' : 'Show earlier work';
   });
 
-  // Lightbox
+ // ── REPAIRED LIGHTBOX ARCHITECTURE ──
   const lightbox = document.getElementById('lightbox');
+  const lbImageContainer = document.getElementById('lb-image');
+  const lbTitle = document.getElementById('lb-title');
+  const lbDetail = document.getElementById('lb-detail');
+
   document.querySelectorAll('.work-item').forEach(item => {
     item.addEventListener('click', () => {
-      document.getElementById('lb-title').textContent = item.dataset.title || 'Untitled';
-      document.getElementById('lb-detail').textContent = item.dataset.detail || '';
+      // 1. Grab the metadata cleanly from the outer .work-item wrapper data attributes
+      const titleText = item.getAttribute('data-title') || 'Untitled';
+      const detailText = item.getAttribute('data-detail') || '';
+      
+      // 2. Safely extract the real image file path from the image tag inside this card
+      const clickedImg = item.querySelector('img');
+      const imgSrc = clickedImg ? clickedImg.getAttribute('src') : '';
+      const imgAlt = clickedImg ? clickedImg.getAttribute('alt') : 'Fine Art Canvas';
+
+      // 3. Inject the real image element or fallback to placeholder if image file is missing
+      if (imgSrc) {
+        lbImageContainer.innerHTML = `<img src="${imgSrc}" alt="${imgAlt}" class="lightbox-img">`;
+      } else {
+        lbImageContainer.innerHTML = `
+          <div class="ph-icon" style="width:50px;height:40px;border-color:#4a4742"></div>
+          <span>Artwork Image Missing</span>
+        `;
+      }
+
+      // 4. Inject the text details seamlessly into the layout fields
+      lbTitle.textContent = titleText;
+      lbDetail.textContent = detailText;
+      
+      // 5. Open the modal screen portal and lock body scrolling background shifts
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
   });
+
+  // ── LIGHTBOX CLOSING UTILITIES ──
   document.getElementById('lb-close').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-  function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  
+  function closeLightbox() { 
+    lightbox.classList.remove('open'); 
+    document.body.style.overflow = ''; 
+  }
+
 </script>
 </body>
 </html>
