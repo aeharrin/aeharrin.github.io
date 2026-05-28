@@ -603,3 +603,19 @@ footer .footer-links a:hover { color: rgba(244,240,232,0.7); }
   /* Combined height of main nav (57px) + series nav (approx 44px) + breathing room */
   scroll-margin-top: 120px !important; 
 }
+
+/* --- Lightbox Real Image Scale Protection --- */
+.lightbox-img {
+  max-height: 75vh !important;
+  max-width: 65vw !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+  .lightbox-img {
+    max-height: 50vh !important;
+    max-width: 85vw !important;
+  }
+}
