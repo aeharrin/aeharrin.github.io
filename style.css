@@ -597,3 +597,9 @@ footer .footer-links a:hover { color: rgba(244,240,232,0.7); }
 #contact .social-link:hover {
   color: #c4a882 !important;
 }
+
+/* ── ANCHOR JUMP OVERLAP REMEDY ── */
+.series-section {
+  /* Combined height of main nav (57px) + series nav (approx 44px) + breathing room */
+  scroll-margin-top: 120px !important; 
+}
