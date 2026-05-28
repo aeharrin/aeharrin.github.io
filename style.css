@@ -556,3 +556,44 @@ footer .footer-links a:hover { color: rgba(244,240,232,0.7); }
     gap: 3rem !important;
   }
 }
+
+/* ==========================================================================
+   DARK CONTACT STRIP CONTRAST FIX (`about.html` & `index.html`)
+   ========================================================================== */
+#contact {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+}
+
+/* 1. Force the heading and subheading into crisp, high-contrast cream */
+#contact .contact-heading {
+  color: var(--cream) !important;
+}
+
+#contact .contact-sub {
+  color: rgba(244, 240, 232, 0.4) !important; /* Softened cream for secondary detail */
+}
+
+/* 2. Style the email link and its baseline border */
+#contact .contact-email {
+  color: var(--cream) !important;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.2) !important;
+  transition: color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* 3. HOVER FIX: Turn the email link and border into gold on hover instead of black */
+#contact .contact-email:hover {
+  color: #c4a882 !important;
+  border-bottom-color: #c4a882 !important;
+}
+
+/* 4. Style the social links row */
+#contact .social-link {
+  color: rgba(244, 240, 232, 0.5) !important;
+  transition: color 0.2s ease !important;
+}
+
+/* 5. HOVER FIX: Turn the Instagram link into gold on hover instead of black */
+#contact .social-link:hover {
+  color: #c4a882 !important;
+}
